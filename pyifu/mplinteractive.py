@@ -543,11 +543,21 @@ class InteractiveCube( BaseObject ):
     def _clean_spec_axspec_(self, only_latest=False):
         """ """
         if not only_latest:
-            self.axspec.lines = [] # remove the spectra lines
-            self.axspec.collections = [] # and their variance
+            # remove the spectra lines
+            for art in self.axspec.lines:
+                art.remove()
+            # and their variance
+            for art in self.axspec.collections:
+                art.remove()
+            # self.axspec.lines = [] # remove the spectra lines
+            # self.axspec.collections = [] # and their variance
         else:
-            self.axspec.lines = self.axspec.lines[:-1] # remove the spectra lines
-            self.axspec.collections = self.axspec.collections[:-1] # and their variance
+            for art in self.axspec.lines[:-1]:
+                art.remove()
+            for art in self.axspec.collections[:-1]:
+                art.remove()
+            # self.axspec.lines = self.axspec.lines[:-1] # remove the spectra lines
+            # self.axspec.collections = self.axspec.collections[:-1] # and their variance
         
     def _clean_wave_axspec_(self):
         """ Remove the selected wavelength """
