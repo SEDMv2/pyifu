@@ -54,7 +54,7 @@ DOCUMENTATION = \
 
 
 def toolbar_active(toolbar):
-    if toolbar is None:# or not toolbar.mode.value:
+    if toolbar is None or toolbar.mode != '':
         return False
     
     return True
