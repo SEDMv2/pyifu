@@ -337,7 +337,7 @@ def refractive_index(lbda, pressure=617., temperature=2., relathumidity=0):
 
     if relathumidity:                              # Humidity correction
         pv = relathumidity / 100. * saturation_vapor_pressure(temperature)  # [Pa]
-        n -= 1e-10 * (292.75 / (temperature + 273.15)) * (3.7345 - 0.0401 * iml2) * pv
+        n = n - 1e-10 * (292.75 / (temperature + 273.15)) * (3.7345 - 0.0401 * iml2) * pv
 
     return n
 
